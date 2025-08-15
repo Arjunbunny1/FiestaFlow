@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "abc53af7-8327-4def-b293-9490cf9944da",
+		"name": "Event_testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45711671",
+		"_collection_link": "https://arjun-4414622.postman.co/workspace/Event_management~519e8fb8-e281-4210-bad1-59878ab111d8/collection/45711671-abc53af7-8327-4def-b293-9490cf9944da?action=share&source=collection_link&creator=45711671"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWUyNWJmNTRjNDMxYjVmZWJiYTE3MSIsInVzZXJuYW1lIjoiQXJqdW4iLCJpYXQiOjE3NTUxOTQ4MTV9.mQStL48zdaKYjYLwBEfge6_MxrTSjP_Nbm0MgbOxEyY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"AI & ML Summit\",\r\n  \"type\": \"Conference\",\r\n  \"isOnline\": true,\r\n  \"capacity\": 200,\r\n  \"confirmedCount\": 50,\r\n  \"date\": \"2025-09-15T00:00:00.000Z\",\r\n  \"location\": \"Virtual Event\",\r\n  \"description\": \"A summit covering AI, ML, and Data Science trends.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_events",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWUyNWJmNTRjNDMxYjVmZWJiYTE3MSIsInVzZXJuYW1lIjoiQXJqdW4iLCJpYXQiOjE3NTUxOTQ4MTV9.mQStL48zdaKYjYLwBEfge6_MxrTSjP_Nbm0MgbOxEyY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/events/689e40399c4a91718bd6d913",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"events",
+						"689e40399c4a91718bd6d913"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWUyNWJmNTRjNDMxYjVmZWJiYTE3MSIsInVzZXJuYW1lIjoiQXJqdW4iLCJpYXQiOjE3NTUxOTQ4MTV9.mQStL48zdaKYjYLwBEfge6_MxrTSjP_Nbm0MgbOxEyY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Updated AI & ML Summit\",\r\n  \"confirmedCount\": 120\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/events/689e3f229c4a91718bd6d90d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"events",
+						"689e3f229c4a91718bd6d90d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWUyNWJmNTRjNDMxYjVmZWJiYTE3MSIsInVzZXJuYW1lIjoiQXJqdW4iLCJpYXQiOjE3NTUxOTQ4MTV9.mQStL48zdaKYjYLwBEfge6_MxrTSjP_Nbm0MgbOxEyY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/events/689e3ff39c4a91718bd6d910",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"events",
+						"689e3ff39c4a91718bd6d910"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_one_event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWUyNWJmNTRjNDMxYjVmZWJiYTE3MSIsInVzZXJuYW1lIjoiQXJqdW4iLCJpYXQiOjE3NTUxOTQ4MTV9.mQStL48zdaKYjYLwBEfge6_MxrTSjP_Nbm0MgbOxEyY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/events/689e40399c4a91718bd6d913",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"events",
+						"689e40399c4a91718bd6d913"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
