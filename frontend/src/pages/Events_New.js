@@ -344,12 +344,33 @@ const Events = () => {
                       </Box>
                     )}
 
-                    <Box display="flex" alignItems="center" mb={2}>
+                    <Box display="flex" alignItems="center" mb={1}>
                       <People sx={{ mr: 1, color: 'text.secondary', fontSize: 20 }} />
                       <Typography variant="body2" color="text.secondary">
-                        {event.confirmedCount || 0} / {event.capacity || 'Unlimited'} attendees
+                        <strong>{event.confirmedCount || 0}</strong> confirmed attendees
                       </Typography>
                     </Box>
+
+                    {event.capacity > 0 && (
+                      <Box display="flex" alignItems="center" mb={2} ml={3}>
+                        <Typography variant="body2" color="text.secondary">
+                          <strong style={{ 
+                            color: (event.remainingSeats || 0) <= 5 ? '#f44336' : '#4caf50',
+                            fontSize: '0.9em'
+                          }}>
+                            {event.remainingSeats || 0}
+                          </strong> seats remaining out of {event.capacity}
+                        </Typography>
+                      </Box>
+                    )}
+
+                    {!event.capacity && (
+                      <Box display="flex" alignItems="center" mb={2} ml={3}>
+                        <Typography variant="body2" color="text.secondary">
+                          Unlimited capacity
+                        </Typography>
+                      </Box>
+                    )}
 
                     {event.description && (
                       <Typography

@@ -41,6 +41,7 @@ const EventForm = () => {
     location: '',
     description: '',
     capacity: '',
+    confirmedCount: '',
     isOnline: false
   });
   const [errors, setErrors] = useState({});
@@ -67,6 +68,7 @@ const EventForm = () => {
         location: event.location || '',
         description: event.description || '',
         capacity: event.capacity || '',
+        confirmedCount: event.confirmedCount || '',
         isOnline: event.isOnline || false
       });
     } catch (error) {
@@ -132,6 +134,15 @@ const EventForm = () => {
       newErrors.capacity = 'Capacity must be a positive number';
     }
 
+    if (formData.confirmedCount && (isNaN(formData.confirmedCount) || parseInt(formData.confirmedCount) < 0)) {
+      newErrors.confirmedCount = 'Confirmed count must be a non-negative number';
+    }
+
+    if (formData.capacity && formData.confirmedCount && 
+        parseInt(formData.confirmedCount) > parseInt(formData.capacity)) {
+      newErrors.confirmedCount = 'Confirmed count cannot exceed capacity';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -150,6 +161,7 @@ const EventForm = () => {
         location: formData.isOnline ? 'Online Event' : formData.location.trim(),
         description: formData.description.trim(),
         capacity: formData.capacity ? parseInt(formData.capacity) : 0,
+        confirmedCount: formData.confirmedCount ? parseInt(formData.confirmedCount) : 0,
         isOnline: formData.isOnline
       };
 
@@ -392,6 +404,31 @@ const EventForm = () => {
                     error={!!errors.capacity}
                     helperText={errors.capacity || 'Leave empty for unlimited capacity'}
                     placeholder="Enter maximum attendees"
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: 2,
+                        '&:hover .MuiOutlinedInput-notchedOutline': {
+                          borderColor: '#667eea',
+                        },
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                          borderColor: '#667eea',
+                        },
+                      },
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    name="confirmedCount"
+                    label="Confirmed Attendees"
+                    type="number"
+                    value={formData.confirmedCount}
+                    onChange={handleInputChange}
+                    error={!!errors.confirmedCount}
+                    helperText={errors.confirmedCount || 'Number of people already confirmed'}
+                    placeholder="Enter confirmed count"
                     sx={{
                       '& .MuiOutlinedInput-root': {
                         borderRadius: 2,
